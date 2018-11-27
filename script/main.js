@@ -8,10 +8,10 @@ function main(param) {
 	};
 
 	scene.message.add(function(msg) {
-		if (msg.data && msg.data.type === "start" && msg.data.parameters && msg.data.parameters.gameTimeLimit) {
+		if (msg.data && msg.data.type === "start" && msg.data.parameters && msg.data.parameters.totalTimeLimit) {
 			// 制限時間を通知するイベントを受信した時点で初期化する
-			// タイトル、チュートリアル、スコア発表などが無く尺があまるため、25秒多めにとる
-			gameTimeLimit = msg.data.parameters.gameTimeLimit + 25;
+			// ゲームのローディング時間を考慮し、7秒短くする
+			gameTimeLimit = msg.data.parameters.totalTimeLimit - 7;
 		}
 	});
 
